@@ -1,0 +1,20 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <include file="01-remove-constraint-code-table-flights.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.6.1" author="kochetkov_alexey">
+        <tagDatabase tag="v-1.6-remove-constraint-code-table-flights"/>
+    </changeSet>
+
+    <include file="02-change_code_content-table-flights.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.6.2" author="kochetkov_alexey">
+        <tagDatabase tag="v-1.6-change_code_content-table-flights"/>
+    </changeSet>
+
+</databaseChangeLog>

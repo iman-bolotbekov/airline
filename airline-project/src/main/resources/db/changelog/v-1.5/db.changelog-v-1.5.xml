@@ -1,0 +1,62 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <include file="01-filling-table-aircrafts.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.5.1" author="aleksandr-netesov">
+        <tagDatabase tag="v-1.5-filling-table-aircrafts"/>
+    </changeSet>
+
+    <include file="02-filling-table-destination.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.5.2" author="aleksandr-netesov">
+        <tagDatabase tag="v-1.5-filling-table-destination"/>
+    </changeSet>
+
+    <include file="03-filling-table-flights.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.5.3" author="aleksandr-netesov">
+        <tagDatabase tag="v-1.5-filling-table-flights"/>
+    </changeSet>
+
+    <include file="04-filling-table-passengers.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.5.4" author="aleksandr-netesov">
+        <tagDatabase tag="v-1.5-filling-table-passengers"/>
+    </changeSet>
+
+    <include file="05-filling-table-route.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.5.5" author="aleksandr-netesov">
+        <tagDatabase tag="v-1.5-filling-table-route"/>
+    </changeSet>
+
+    <include file="06-filling-table-seats.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.5.6" author="aleksandr-netesov">
+        <tagDatabase tag="v-1.5-filling-table-seats"/>
+    </changeSet>
+
+    <include file="07-filling-table-flight_seats.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.5.7" author="aleksandr-netesov">
+        <tagDatabase tag="v-1.5-filling-table-flight_seats"/>
+    </changeSet>
+
+    <include file="08-filling-table-tickets.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.5.8" author="aleksandr-netesov">
+        <tagDatabase tag="v-1.5-filling-table-tickets"/>
+    </changeSet>
+
+    <include file="09-filling-table-booking.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.5.9" author="aleksandr-netesov">
+        <tagDatabase tag="v-1.5-filling-table-booking"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,15 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <include file="01-update-table-seats.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.8.1" author="kochetkov_alexey">
+        <tagDatabase tag="v-1.8-update-table-seats"/>
+    </changeSet>
+
+
+</databaseChangeLog>

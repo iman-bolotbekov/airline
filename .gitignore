@@ -1,0 +1,44 @@
+/airline-project/target/
+/airline-payments/target/
+/airline-frontend/target/
+/common/target/
+!.mvn/wrapper/maven-wrapper.jar
+/S7_Airlines_API.postman_collection.json
+dependency-reduced-pom.xml
+*.log
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+target
+node_modules
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+/logs/
+
+### Frontend(Vaadin) ###
+*.ts
+*.json
+/airline-frontend/frontend/
+/airline-frontend/node_modules/
+/airline-project/node_modules/
+/airline-project/frontend/generated/
+/airline-project/frontend/index.html

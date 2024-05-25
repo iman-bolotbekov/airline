@@ -1,0 +1,1 @@
+ALTER TABLE destination ADD COLUMN is_deleted BOOLEAN DEFAULT FALSE;

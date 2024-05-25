@@ -1,0 +1,20 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <include file="01-filling-table-flights.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.10.1" author="arina_skvortsova">
+        <tagDatabase tag="v-1.10-update-table-seats"/>
+    </changeSet>
+
+    <include file="02-filling-table-flight_seats.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.10.2" author="arina_skvortsova">
+        <tagDatabase tag="v-1.10-filling-table-flight_seats"/>
+    </changeSet>
+
+</databaseChangeLog>

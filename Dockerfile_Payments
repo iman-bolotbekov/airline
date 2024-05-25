@@ -1,0 +1,21 @@
+FROM maven:3.8.4-openjdk-17-slim AS build
+
+WORKDIR /build/common
+COPY common/pom.xml .
+COPY common/src /build/src
+RUN mvn -f /build/common/pom.xml clean install
+
+WORKDIR /build/airline-microservice-starter
+COPY airline-microservice-starter/pom.xml .
+COPY airline-microservice-starter/src /build/src
+RUN mvn -f /build/airline-microservice-starter/pom.xml clean install
+
+WORKDIR /build
+COPY airline-payments/pom.xml .
+COPY airline-payments/src /build/src
+RUN mvn -f /build/pom.xml clean package
+
+FROM openjdk:17-alpine
+COPY --from=build /build/target/airline-payments.jar airline-payments.jar
+EXPOSE 8081
+ENTRYPOINT ["java", "-Xmx512m", "-Xms256m", "-jar", "airline-payments.jar"]

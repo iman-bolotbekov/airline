@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: airline-payments-config-map
+data:
+  application.yml: |
+    paypal:
+      mode: sandbox
+      client:
+        id: ATOLWJkYu4yYYvOcYjTqjblIESKbbUMWnkwtc1T_5JgMIxXgYm3kOMc0jB4Cb3hscdAaNbAqr1awxQ9E
+        secret: EOkg1jdtlyT1bANvDZCaJdfdstBBvOljyNap1nYanCYcH6FVMCH-EQ-JkKsmvjG6-GwGRUQ961PmHZvV

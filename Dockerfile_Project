@@ -1,0 +1,24 @@
+FROM maven:3.8.4-openjdk-17-slim AS build
+
+WORKDIR /build/common
+COPY common/pom.xml .
+COPY common/src /build/src
+RUN mvn -f /build/common/pom.xml clean install
+
+WORKDIR /build/airline-microservice-starter
+COPY airline-microservice-starter/pom.xml .
+COPY airline-microservice-starter/src /build/src
+RUN mvn -f /build/airline-microservice-starter/pom.xml clean install
+
+WORKDIR /build
+COPY airline-project/pom.xml .
+COPY airline-project/src /build/src
+RUN mvn -f /build/pom.xml clean package
+
+FROM openjdk:17-alpine
+ENV JAVA_TOOL_OPTIONS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+COPY --from=build /build/target/airline-project.jar airline-project.jar
+COPY --from=build /build/src airline-project/src/main/resources
+EXPOSE 8080
+EXPOSE 5005
+ENTRYPOINT ["java", "-Xmx512m", "-Xms256m", "-jar", "airline-project.jar", "java $JAVA_OPTS -jar /airline-project.jar"]

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <include file="01-drop-tables-admin-airline_manager_passengers.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.15.1" author="olga-alikulieva">
+        <tagDatabase tag="01-drop-tables-admin-airline_manager_passengers"/>
+    </changeSet>
+
+    <include file="02-create-table-passengers.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.15.2" author="olga-alikulieva">
+        <tagDatabase tag="02-create-table-passengers"/>
+    </changeSet>
+
+    <include file="03-create-table-account.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.15.3" author="olga-alikulieva">
+        <tagDatabase tag="03-create-table-account"/>
+    </changeSet>
+
+    <include file="04-filling-tables-account-passengers.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.15.4" author="olga-alikulieva">
+        <tagDatabase tag="04-filling-tables-account-passengers"/>
+    </changeSet>
+
+</databaseChangeLog>
+

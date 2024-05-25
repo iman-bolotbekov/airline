@@ -1,0 +1,9 @@
+.idea/
+logs/
+guides/
+deployments/
+*.md
+*.pdf
+.git
+p_dp_airline_1.postman_collection.json
+EntitiesDiagramS7.pdf

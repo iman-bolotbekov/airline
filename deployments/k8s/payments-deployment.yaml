@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airline-payments-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: airline-payments
+    spec:
+      containers:
+        - name: airline-payments-pod
+          image: airline-payments:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8081
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8081
+            initialDelaySeconds: 120
+            periodSeconds: 30
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: application-config
+              mountPath: /config/application.yml
+              subPath: application.yml
+      volumes:
+        - name: application-config
+          configMap:
+            name: airline-payments-config-map
+  selector:
+    matchLabels:
+      app: airline-payments

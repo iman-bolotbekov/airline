@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airline-project-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: airline-project
+    spec:
+      containers:
+        - name: airline-project-pod
+          image: airline-project:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: JAVA_OPTS
+              value: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+            - name: JAVA_ENABLE_DEBUG
+              value: "true"
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: remotedebugging
+              containerPort: 5005
+              protocol: TCP
+          volumeMounts:
+            - name: application-config
+              mountPath: /config/application.yml
+              subPath: application.yml
+          resources:
+            requests:
+              cpu: 0.5
+              memory: "400Mi"
+            limits:
+              cpu: 2
+              memory: "1Gi"
+      volumes:
+        - name: application-config
+          configMap:
+            name: airline-config-map
+  selector:
+    matchLabels:
+       app: airline-project

@@ -1,0 +1,15 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <include file="01-update-table-destination.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.11.1" author="evgeni_hud">
+        <tagDatabase tag="v-1.11-update-table-destination"/>
+    </changeSet>
+
+
+</databaseChangeLog>

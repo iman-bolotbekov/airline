@@ -1,0 +1,90 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: -1
+
+springdoc:
+  swagger-ui:
+    path: swagger-ui
+    enabled: true
+    oauth2:
+      enabled: true
+spring:
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+  application:
+    name: airline-project
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/airline_db?useUnicode=yes&characterEncoding=UTF-8&serverTimezone=Europe/Moscow
+    username: root
+    password: root
+    hikari:
+      leak-detection-threshold: 60000
+      maximum-pool-size: 20
+      cloud:
+        openfeign:
+          client:
+            config:
+              default:
+                connectTimeout: 5000
+                readTimeout: 5000
+                loggerLevel: basic
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        storage_engine: innodb
+#        current_session_context_class: org.springframework.orm.hibernate6.SpringSessionContext
+        format_sql: true
+        jdbc:
+          time_zone: Europe/Moscow
+        cache:
+          use_second_level_cache: true
+          region:
+            factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+          ehcache:
+            missing_cache_strategy: create
+  mail:
+    host: smtp.gmail.com # Хост почтового сервера, с которого будут отправляться письма пользователям
+    port: 465 # Порт почтового сервера, с которого будут отправляться письма пользователям
+    username: # Логин для почтового ящика, с которого будут отправляться письма пользователям
+    password: # Пароль для почтового ящика, с которого будут отправляться письма пользователям
+    properties:
+      mail:
+        smtp:
+          auth: true # Использовать ли логин и пароль для аутентификации на почтовом сревере
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: true # Шифровать ли соединение с почтовым сервером по протоколу SSL
+    protocol: smtp
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+mail:
+  debug: true
+
+notification:
+  periodOfDbCheck:
+    milliseconds: 10000
+  beforeDeparture:
+    seconds: 86400
+
+app:
+  feign:
+    config:
+      name: Payments
+      url: http://localhost:8081
+
+keycloak:
+  credentials:
+    secret: oQ7YruFeVz4wdKquvpaQw3v1ZACfbxWg

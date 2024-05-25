@@ -1,0 +1,22 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <include file="01-create-table-payment.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.9.1" author="danil_tarasov">
+        <tagDatabase tag="v-1.9-create-table-payment"/>
+    </changeSet>
+
+    <include file="02-filling-table-payment.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1.9.2" author="danil_tarasov">
+        <tagDatabase tag="v-1.9-filling-table-payment"/>
+    </changeSet>
+
+
+
+</databaseChangeLog>
